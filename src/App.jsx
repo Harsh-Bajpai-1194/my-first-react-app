@@ -13,8 +13,11 @@ function App() {
       <button onClick={() => setCount(count + 1)} style={{ padding: '10px 20px', fontSize: '16px' }}>
         Increase Count
       </button>
+      <button onClick={() => setCount(count - 1)} style={{ padding: '10px 20px', fontSize: '16px' }}>
+        Decrease Count
+      </button>
     </div>
   );
 }
 
-export default App; 
+export default App;
