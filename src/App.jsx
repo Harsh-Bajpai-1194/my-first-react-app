@@ -1,21 +1,40 @@
-import { useState } from 'react'; // 1. Import the hook
+import { useState } from 'react'
 
+// 1. The new child Component.
+// It receives data through 'props'. We destructured { name, role } immediately.
+function TechCard({ name, role }) {
+  return (
+    <div style={{
+      backgroundColor: '#2a2a2a',
+      padding: '15px',
+      marginBottom: '10px',
+      borderRadius: '8px',
+      borderLeft: '5px solid #646cff'
+    }}>
+      <h3 style={{ margin: 0 }}>{name}</h3>
+      <p style={{ margin: '5px 0 0 0', color: '#aaa' }}>{role}</p>
+    </div>
+  );
+}
+
+// 2. The main parent Component
 function App() {
-  // 2. Declare state: [currentValue, functionToUpdateIt] = useState(initialValue)
-  const [count, setCount] = useState(0);
+  const mernStack = [
+    { id: 1, name: 'MongoDB', role: 'Database' },
+    { id: 2, name: 'Express.js', role: 'Backend Framework' },
+    { id: 3, name: 'React.js', role: 'Frontend Library' },
+    { id: 4, name: 'Node.js', role: 'Runtime Environment' }
+  ];
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Interactive Counter</h1>
-      <p>Current count: <strong>{count}</strong></p>
-
-      {/* 3. Use the setter function on click */}
-      <button onClick={() => setCount(count + 1)} style={{ padding: '10px 20px', fontSize: '16px' }}>
-        Increase Count
-      </button>
-      <button onClick={() => setCount(count - 1)} style={{ padding: '10px 20px', fontSize: '16px' }}>
-        Decrease Count
-      </button>
+    <div style={{ padding: '20px', maxWidth: '400px', margin: '0 auto' }}>
+      <h1>The MERN Stack</h1>
+      <div>
+        {mernStack.map((tech) => (
+          // 3. Using the child component and passing data as 'props'
+          <TechCard key={tech.id} name={tech.name} role={tech.role} />
+        ))}
+      </div>
     </div>
   );
 }
